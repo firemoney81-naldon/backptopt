@@ -1,23 +1,332 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  
+  
+  <title>남들보다 30만 원 비싸게 이사할 건가 여기 다 모아둔 이사 비교 사이트</title>
+
+  
+  
+  <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --accent-color: #ff7675;
+            --bg-color: #f9f9fb;
+            --card-bg: #ffffff;
+            --text-main: #2d3436;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 { margin: 0; font-size: 2.5rem; letter-spacing: -1px; }
+        header p { opacity: 0.9; margin-top: 10px; }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .category-section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .link-card {
+            background: #fff;
+            border: 1px solid #edf2f7;
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(108, 92, 231, 0.15);
+            border-color: var(--secondary-color);
+        }
+
+        .link-card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            color: #111;
+        }
+
+        .link-card p {
+            font-size: 0.9rem;
+            color: #636e72;
+            margin: 0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 0.75rem;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: #2d3436;
+            color: white;
+            margin-top: 5rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .link-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><i class="fas fa-truck-moving"></i> 남들보다 30만 원 비싸게 이사할 건가 여기 다 모아둔 이사 비교 사이트</h1>
+    <p>포장이사부터 보관이사까지, 검증된 파트너와 함께하는 스마트한 시작</p>
+</header>
+
+<div class="container" id="main-content">
+    </div>
+
+<footer>
+    <p>&copy; 2024 Moving Guide Korea. All Rights Reserved.</p>
+    <p>본 페이지는 이사 견적 비교 정보를 제공하며 최적의 이사 경험을 돕습니다.</p>
+</footer>
+
+<script>
+    // 데이터 세분화 및 랜덤화 (총 8개 카테고리)
+    const rawData = [
+        { name: "제천포장이사", url: "https://movingekindk.withusgoat.com", desc: "청풍명월 제천에서 찾는 가장 친절한 이사 서비스의 기준!" },
+        { name: "이삿짐센터가격", url: "https://movingekindl.withusgoat.com", desc: "내 주머니 사정에 딱 맞는 견적, 부르는 게 값이 아닌 합리적 선택." },
+        { name: "창원포장이사", url: "https://movingekindm.withusgoat.com", desc: "경남 이사의 중심! 창원 전문 베테랑들의 손길을 느껴보세요." },
+        { name: "5톤이사비용", url: "https://movingekindn.withusgoat.com", desc: "짐이 많아도 걱정 노! 5톤 트럭 가득 채워도 넉넉한 견적 확인." },
+        { name: "일반이사", url: "https://movingekindo.withusgoat.com", desc: "실속파를 위한 선택, 짐 정리의 즐거움을 아는 당신을 위해." },
+        { name: "이사집센터", url: "https://movingekindp.withusgoat.com", desc: "집을 옮기는 것이 아니라 행복을 옮겨드리는 전문 센터 모음." },
+        { name: "이사비", url: "https://movingekindq.withusgoat.com", desc: "이사 비용, 도대체 얼마가 적당할까? 실시간 시세 파악하기." },
+        { name: "전주용달이사", url: "https://movingekindr.withusgoat.com", desc: "맛의 고장 전주에서 솜씨 좋게 짐 싸주는 용달 달인을 만나다." },
+        { name: "인천이사업체", url: "https://movingekinds.withusgoat.com", desc: "송도부터 구월까지, 인천 전역을 아우르는 압도적 전문성." },
+        { name: "광산구이사", url: "https://movingekindt.withusgoat.com", desc: "광주 광산구 골목골목 잘 아는 지역 밀착형 이사 솔루션." },
+        { name: "강서구포장이사", url: "https://movingekindu.withusgoat.com", desc: "서울 강서권 이사 고민 해결! 꼼꼼한 포장으로 승부합니다." },
+        { name: "포장이사 반포장이사", url: "https://movingekindv.withusgoat.com", desc: "완벽 포장이냐 알뜰 반포장이냐, 당신의 선택을 돕는 가이드." },
+        { name: "사다리차가격", url: "https://movingekindw.withusgoat.com", desc: "고층 이사의 필수품, 하늘 높이 뻗는 사다리차 이용료 총정리." },
+        { name: "포장이사비용견적", url: "https://movingekindx.withusgoat.com", desc: "복잡한 계산은 그만, 클릭 한 번으로 끝내는 초간편 견적 시스템." },
+        { name: "원룸이사가격비교", url: "https://movingekindy.withusgoat.com", desc: "자취생의 고민! 작지만 소중한 내 짐, 가장 저렴하게 옮기는 법." },
+        { name: "해운대이사", url: "https://movingekindz.withusgoat.com", desc: "오션뷰 아파트 전문, 부산 해운대 프리미엄 이사의 정석." },
+        { name: "김해이삿짐센터", url: "https://movingfkinda.withusgoat.com", desc: "가야의 숨결 김해에서 전해드리는 안전하고 빠른 이사 소식." },
+        { name: "대구북구이삿짐", url: "https://movingfkindb.withusgoat.com", desc: "대구 북구 주민들이 극찬한 입소문 난 그 업체, 확인해보세요." },
+        { name: "안산이삿짐센터", url: "https://movingfkindc.withusgoat.com", desc: "안산 전 지역, 빌라부터 아파트까지 맞춤형 포장 서비스." },
+        { name: "별내동포장이사", url: "https://movingfkindd.withusgoat.com", desc: "남양주 별내 신도시 전문, 깔끔하고 트렌디한 이사 매너." },
+        { name: "이사준비리스트", url: "https://movingfkinde.withusgoat.com", desc: "이사 D-30부터 당일까지, 놓치면 후회하는 체크리스트 100선." },
+        { name: "포장이사추천", url: "https://movingfkindf.withusgoat.com", desc: "지인에게만 몰래 알려주던 진짜 잘하는 이사 업체 리스트." },
+        { name: "장거리이사", url: "https://movingfkindg.withusgoat.com", desc: "서울에서 부산까지, 긴 여정도 안심하고 맡기는 장거리 스페셜." },
+        { name: "부산보관이사", url: "https://movingfkindh.withusgoat.com", desc: "입주 날짜가 안 맞을 때? 부산 최고의 창고 보관 서비스." },
+        { name: "익산포장이사", url: "https://movingfkindi.withusgoat.com", desc: "전북 익산의 베테랑들이 제안하는 스트레스 제로 이사법." },
+        { name: "진주이삿짐센터", url: "https://movingfkindj.withusgoat.com", desc: "진주성만큼 튼튼하게 짐을 지켜드리는 신뢰의 이사 서비스." },
+        { name: "이사센터", url: "https://movingfkindk.withusgoat.com", desc: "어디로 갈지 막막할 때 가장 먼저 들러야 할 이사 허브." },
+        { name: "이사짐센터추천", url: "https://movingfkindl.withusgoat.com", desc: "실패 없는 이사를 원하신다면? 실제 사용자 만족도 1위 업체들." },
+        { name: "이사날짜택일", url: "https://movingfkindm.withusgoat.com", desc: "손 없는 날 확인! 복이 들어오는 최고의 이사 날짜 잡기." },
+        { name: "이사시체크리스트", url: "https://movingfkindn.withusgoat.com", desc: "가스 차단부터 주소 변경까지, 머리 아픈 일들을 한 번에 해결." },
+        { name: "이사용달", url: "https://movingfkindo.withusgoat.com", desc: "가벼운 짐, 무거운 마음은 내려놓고 용달로 가볍게 이동하세요." },
+        { name: "포장이사후기", url: "https://movingfkindp.withusgoat.com", desc: "광고가 아닌 진짜배기 내돈내산 이사 후기로 검증하기." },
+        { name: "이삿짐보관가격", url: "https://movingfkindq.withusgoat.com", desc: "창고 대여료가 궁금하다면? 기간별, 크기별 보관 요금표 공개." },
+        { name: "실내보관이사", url: "https://movingfkindr.withusgoat.com", desc: "온도·습도 관리 완벽! 소중한 가구를 위한 프리미엄 실내 보관." },
+        { name: "이삿짐비용", url: "https://movingfkinds.withusgoat.com", desc: "거품을 걷어낸 순수 이사 비용, 정직한 견적의 비밀." },
+        { name: "원룸이사가격", url: "https://movingfkindt.withusgoat.com", desc: "커피 몇 잔 값으로 이사 끝? 원룸 이사 최저가 도전." },
+        { name: "창원이사업체", url: "https://movingfkindu.withusgoat.com", desc: "창원 지역에서 가장 평점 높은 이사 전문가 그룹." },
+        { name: "부산이사청소", url: "https://movingfkindv.withusgoat.com", desc: "이사만큼 중요한 청소, 부산에서 새집 증후군까지 싹 잡아드립니다." },
+        { name: "양산이삿짐센터", url: "https://movingfkindw.withusgoat.com", desc: "물금부터 덕계까지, 양산 전역 신속 출동 대기 중." },
+        { name: "전주이사업체", url: "https://movingfkindx.withusgoat.com", desc: "전주 시민들이 추천하는 전주 전문 이사 마스터." },
+        { name: "문정동이사", url: "https://movingfkindy.withusgoat.com", desc: "송파 문정 법조단지 전문, 오피스텔 이사의 달인." },
+        { name: "문정동포장이사", url: "https://movingfkindz.withusgoat.com", desc: "문정동 직장인들이 가장 선호하는 깔끔한 마무리 서비스." },
+        { name: "이사비용지원", url: "https://movinggkinda.withusgoat.com", desc: "정부 지원금부터 바우처까지, 이사비 아끼는 꿀팁 전수." },
+        { name: "5톤포장이사비용", url: "https://movinggkindb.withusgoat.com", desc: "대형 이사의 정석, 5톤 기준 가장 합리적인 견적서." },
+        { name: "보관이사업체", url: "https://movinggkindc.withusgoat.com", desc: "믿고 맡길 수 있는 보안 철저한 보관 전문 기업 리스트." },
+        { name: "30평대이사비용", url: "https://movinggkindd.withusgoat.com", desc: "국민 평수 30평대, 평균 이사 견적은 얼마일까요?" },
+        { name: "이사할때", url: "https://movinggkinde.withusgoat.com", desc: "무엇부터 해야 할지 모를 때 읽어보는 이사 바이블." },
+        { name: "이사순서", url: "https://movinggkindf.withusgoat.com", desc: "당황하지 마세요! A부터 Z까지 알려주는 완벽 이사 프로세스." },
+        { name: "이사견적어플", url: "https://movinggkindg.withusgoat.com", desc: "손안에서 끝내는 이사 준비, 요즘 대세 견적 앱 전격 비교." },
+        { name: "32평이사비용", url: "https://movinggkindh.withusgoat.com", desc: "32평 아파트 맞춤형 견적 제안, 비용 절감의 노하우." },
+        { name: "아파트포장이사비용", url: "https://movinggkindi.withusgoat.com", desc: "아파트 단지 특성을 잘 아는 전문 팀의 체계적인 견적." },
+        { name: "울산보관이사", url: "https://movinggkindj.withusgoat.com", desc: "울산 전 지역, 24시간 안전 감시 시스템을 갖춘 보관 서비스." },
+        { name: "익산이삿짐센터", url: "https://movinggkindk.withusgoat.com", desc: "익산에서 가장 빠른 견적 상담, 지금 바로 만나보세요." },
+        { name: "부산이삿짐", url: "https://movinggkindl.withusgoat.com", desc: "부산 사투리처럼 시원시원하게 해결해드리는 이사의 모든 것." },
+        { name: "해운대이삿짐", url: "https://movinggkindm.withusgoat.com", desc: "해운대의 가치를 아는 프리미엄 운송 솔루션." },
+        { name: "부산이사추천", url: "https://movinggkindn.withusgoat.com", desc: "부산 사람들이 직접 뽑은 베스트 10 이사 전문 업체." },
+        { name: "강남포장이사", url: "https://movinggkindo.withusgoat.com", desc: "강남의 품격에 맞는 고품격 프리미엄 포장 이사." },
+        { name: "안양포장이사", url: "https://movinggkindp.withusgoat.com", desc: "안양 시민들의 든든한 이사 파트너, 친절함이 무기입니다." },
+        { name: "순천이삿짐센터", url: "https://movinggkindq.withusgoat.com", desc: "전남 순천의 깨끗하고 맑은 자연처럼 투명한 견적." },
+        { name: "이사할때체크리스트", url: "https://movinggkindr.withusgoat.com", desc: "작은 물건 하나도 잃어버리지 않는 완벽 준비의 비결." },
+        { name: "보관이사견적", url: "https://movinggkinds.withusgoat.com", desc: "보관부터 이사까지 한 번에! 더블 혜택 견적 받기." },
+        { name: "셀프이사", url: "https://movinggkindt.withusgoat.com", desc: "내 짐은 내가 옮긴다! 가성비 끝판왕 셀프 이사 팁." },
+        { name: "포장이사업체추천", url: "https://movinggkindu.withusgoat.com", desc: "전문가들이 엄선한 이사계의 어벤져스들을 소개합니다." },
+        { name: "포장이사박스", url: "https://movinggkindv.withusgoat.com", desc: "파손 걱정 끝! 전용 박스와 포장재로 안전하게 감싸드려요." },
+        { name: "컨테이너이삿짐보관비용", url: "https://movinggkindw.withusgoat.com", desc: "장기 보관에 최적화된 컨테이너 이용료 상세 안내." },
+        { name: "이사종류", url: "https://movinggkindx.withusgoat.com", desc: "나에게 딱 맞는 이사 방식 찾기 (포장, 일반, 용달, 보관)." },
+        { name: "세종이사", url: "https://movinggkindy.withusgoat.com", desc: "행정수도 세종시 최적화, 공무원 및 직장인 전문 이사." },
+        { name: "청주이사짐센터", url: "https://movinggkindz.withusgoat.com", desc: "충북 청주에서 가장 오래된 신뢰와 전통의 업체." },
+        { name: "강남이삿짐센터", url: "https://movinghkinda.withusgoat.com", desc: "강남 거주 고객들이 가장 만족한 섬세한 뒷정리 서비스." },
+        { name: "부산이사", url: "https://movinghkindb.withusgoat.com", desc: "부산 어디든 24시간 이내 견적 가능, 빠름의 미학." },
+        { name: "세종시이사", url: "https://movinghkindc.withusgoat.com", desc: "세종시 새 아파트 입주 박람회 공식 선정 업체 정보." },
+        { name: "해운대이사업체", url: "https://movinghkindd.withusgoat.com", desc: "해운대 고층 빌딩 이사의 독보적인 노하우 보유." },
+        { name: "아파트이사비용", url: "https://movinghkinde.withusgoat.com", desc: "관리사무소 신고부터 엘리베이터 예약까지 알려주는 비용 가이드." },
+        { name: "보관이사가격", url: "https://movinghkindf.withusgoat.com", desc: "한 달 보관하면 얼마? 궁금했던 보관 비용의 모든 것." },
+        { name: "이사보관비용", url: "https://movinghkindg.withusgoat.com", desc: "보관 이사 시 발생하는 추가 비용을 미리 방지하세요." },
+        { name: "성남이삿짐센터", url: "https://movinghkindh.withusgoat.com", desc: "분당, 판교 성남 주민들이 신뢰하는 깔끔한 마무리." },
+        { name: "안동이사", url: "https://movinghkindi.withusgoat.com", desc: "선비의 고장 안동, 정성을 다하는 고품격 이사 서비스." },
+        { name: "서울이사", url: "https://movinghkindj.withusgoat.com", desc: "대한민국 서울 어디든! 복잡한 골목도 문제없는 전문 기술." },
+        { name: "보관이사냉장고", url: "https://movinghkindk.withusgoat.com", desc: "보관 이사 시 냉장고 음식물 처리와 청소 꿀팁." },
+        { name: "이삿짐보관창고", url: "https://movinghkindl.withusgoat.com", desc: "내 짐이 잠시 머무는 곳, 쾌적한 전용 창고를 확인하세요." },
+        { name: "부산이사짐센터 추천 후기", url: "https://movinghkindm.withusgoat.com", desc: "부산에서 직접 받아본 견적서와 생생한 현장 후기 공개." },
+        { name: "이삿짐센터가격비교", url: "https://movinghkindn.withusgoat.com", desc: "이곳저곳 전화하지 말고 한 곳에서 끝내는 스마트 비교." },
+        { name: "원주이사업체", url: "https://movinghkindo.withusgoat.com", desc: "강원 원주 혁신도시 전문, 빠르고 정확한 서비스." },
+        { name: "해운대구이사", url: "https://movinghkindp.withusgoat.com", desc: "해운대구 거주자를 위한 지역 특화 이사 혜택." },
+        { name: "대구사무실이사", url: "https://movinghkindq.withusgoat.com", desc: "사업 번창을 위한 시작, 대구 전문 오피스 이전 팀." },
+        { name: "목포이사", url: "https://movinghkindr.withusgoat.com", desc: "목포항처럼 시원하고 넓은 마음으로 서비스해 드립니다." },
+        { name: "강동구이사", url: "https://movinghkinds.withusgoat.com", desc: "서울 강동 주민이라면 꼭 알아야 할 인기 업체 모음." },
+        { name: "광명포장이사", url: "https://movinghkindt.withusgoat.com", desc: "광명 이케아 근처 아파트 전문, 가구 조립 서비스까지!" },
+        { name: "익산이사", url: "https://movinghkindu.withusgoat.com", desc: "익산에서 가장 저렴하지만 가장 확실한 이사 방법." },
+        { name: "포장이사견적사이트", url: "https://movinghkindv.withusgoat.com", desc: "광고 없는 순수 견적 사이트에서 진짜 실력을 확인하세요." },
+        { name: "보관이사 후기 공유", url: "https://movinghkindw.withusgoat.com", desc: "짐 보관 후기 보고 결정하세요. 곰팡이 걱정 없는 업체." },
+        { name: "원룸이사용달", url: "https://movinghkindx.withusgoat.com", desc: "학생, 취준생을 위한 맞춤형 용달 서비스의 정석." },
+        { name: "해운대원룸이사", url: "https://movinghkindy.withusgoat.com", desc: "해운대 오피스텔 원룸러들을 위한 가성비 끝판왕." },
+        { name: "광양포장이사", url: "https://movinghkindz.withusgoat.com", desc: "철강의 도시 광양에서 보여주는 단단한 신뢰의 이사." },
+        { name: "대전이사청소", url: "https://movingikinda.withusgoat.com", desc: "대전 이사 후 반짝반짝 빛나는 새집을 원하신다면." },
+        { name: "서울포장이사", url: "https://movingikindb.withusgoat.com", desc: "서울의 복잡한 교통 체증도 뚫고 제시간에 도착하는 프로." },
+        { name: "부산용달비용", url: "https://movingikindc.withusgoat.com", desc: "부산 용달 비용 정찰제! 더 이상 바가지 쓰지 마세요." },
+        { name: "원룸포장이사가격", url: "https://movingikindd.withusgoat.com", desc: "작은 방 하나도 정성껏, 원룸 전용 포장 패키지." },
+        { name: "투룸포장이사비용", url: "https://movingikinde.withusgoat.com", desc: "혼자 하기 힘든 투룸 이사, 비용 부담을 확 낮췄습니다." },
+        { name: "포장이삿짐센터", url: "https://movingikindf.withusgoat.com", desc: "정석대로 포장하고 깔끔하게 풀어주는 완벽한 파트너." },
+        { name: "이사사다리차", url: "https://movingikindg.withusgoat.com", desc: "빠르고 안전하게! 사다리차 베테랑 기사님 매칭 서비스." },
+        { name: "이삿짐용달", url: "https://movingikindh.withusgoat.com", desc: "용달 한 대로 끝내는 실속형 이사의 모든 것." },
+        { name: "이삿짐센타", url: "https://movingikindi.withusgoat.com", desc: "믿음직한 이사 센터가 필요할 때 가장 먼저 찾는 곳." },
+        { name: "이사짐센터가격", url: "https://movingikindj.withusgoat.com", desc: "전국 평균가 확인하고 우리 집 견적과 비교해보세요." },
+        { name: "원룸이삿짐센터", url: "https://movingikindk.withusgoat.com", desc: "1인 가구 최적화, 짐의 양에 맞춘 슬림한 가격." },
+        { name: "이사업체견적", url: "https://movingikindl.withusgoat.com", desc: "무료 방문 견적 신청하고 사은품까지 챙기는 법." },
+        { name: "이삿짐견적", url: "https://movingikindm.withusgoat.com", desc: "전화 상담 5분이면 끝나는 초간편 이사 견적 시스템." },
+        { name: "이사업체비교", url: "https://movingikindn.withusgoat.com", desc: "보험 가입 업체인지, 평점은 높은지 꼼꼼하게 따지기." },
+        { name: "이사추천", url: "https://movingikindo.withusgoat.com", desc: "지인 추천보다 더 정확한 빅데이터 기반 업체 리스트." },
+        { name: "포장이사보관비용", url: "https://movingikindp.withusgoat.com", desc: "포장과 보관을 동시에! 결합 할인 혜택 확인하세요." },
+        { name: "5톤트럭이사", url: "https://movingikindq.withusgoat.com", desc: "대량 운송의 달인, 5톤 트럭 안전 운송 가이드." },
+        { name: "이사비용카드결제", url: "https://movingikindr.withusgoat.com", desc: "현금 영수증은 물론, 무이자 할부 가능한 업체 찾기." },
+        { name: "반포장이사후기", url: "https://movingikinds.withusgoat.com", desc: "직접 해보니 어때요? 반포장이사 생생한 리얼 보이스." },
+        { name: "장거리이사비용", url: "https://movingikindt.withusgoat.com", desc: "시도 경계를 넘는 장거리 이동, 기름값 걱정 없는 견적." },
+        { name: "보관이사추천", url: "https://movingikindu.withusgoat.com", desc: "장기 보관 고객이 다시 찾는 바로 그 보관 전문점." },
+        { name: "일반이사비용", url: "https://movingikindv.withusgoat.com", desc: "단순 운송만 필요할 때 찾는 최저가 견적 서비스." },
+        { name: "24평포장이사비용", url: "https://movingikindw.withusgoat.com", desc: "신혼부부 및 소가족이 가장 많이 찾는 24평 견적." },
+        { name: "경주포장이사", url: "https://movingikindx.withusgoat.com", desc: "천년고도 경주에서 찾는 가장 현대적이고 스마트한 이사." },
+        { name: "서울이삿짐센터", url: "https://movingikindy.withusgoat.com", desc: "복잡한 서울 시내 주행에 능숙한 베테랑 기사님들." }
+    ];
+
+    // 카테고리 정의
+    const categories = [
+        { title: "지역별 추천 이사", icon: "fa-map-marker-alt" },
+        { title: "이사 비용 & 견적", icon: "fa-won-sign" },
+        { title: "포장 및 전문 이사", icon: "fa-box-open" },
+        { title: "원룸 & 소형 이사", icon: "fa-truck-pickup" },
+        { title: "보관 이사 서비스", icon: "fa-warehouse" },
+        { title: "이사 준비 꿀팁", icon: "fa-clipboard-list" },
+        { title: "후기 및 업체 비교", icon: "fa-star" },
+        { title: "프리미엄 & 대형 이사", icon: "fa-gem" }
+    ];
+
+    // 배열 셔플 함수
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    const shuffledLinks = shuffle([...rawData]);
+    const shuffledCategories = shuffle([...categories]);
+    const mainContent = document.getElementById('main-content');
+
+    // 카테고리별로 데이터 분배 (5~8개씩)
+    shuffledCategories.forEach((cat, index) => {
+        const section = document.createElement('section');
+        section.className = 'category-section';
+        
+        const h2 = document.createElement('h2');
+        h2.className = 'category-title';
+        h2.innerHTML = `<i class="fas ${cat.icon}"></i> ${cat.title}`;
+        section.appendChild(h2);
+
+        const grid = document.createElement('div');
+        grid.className = 'link-grid';
+
+        // 각 섹션당 약 10~15개씩 랜덤 배분 (전체 데이터 소진 시까지)
+        const itemsToTake = Math.floor(Math.random() * 4) + 6; // 6~9개 랜덤
+        const categoryLinks = shuffledLinks.splice(0, itemsToTake);
+
+        categoryLinks.forEach(link => {
+            const card = document.createElement('a');
+            card.href = link.url;
+            card.className = 'link-card';
+            card.target = '_blank';
+            card.title = `${link.name} 상세보기`;
+            card.innerHTML = `
+                <span class="badge">BEST</span>
+                <h3>${link.name}</h3>
+                <p>${link.desc}</p>
+            `;
+            grid.appendChild(card);
+        });
+
+        section.appendChild(grid);
+        mainContent.appendChild(section);
+    });
+</script>
+
+</body>
 </html>
